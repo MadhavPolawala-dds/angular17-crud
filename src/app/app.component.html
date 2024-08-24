@@ -9,14 +9,18 @@
 <nav class="w-full flex justify-between p-3">
   <div class="text-3xl font-semibold">Student Portal</div>
   <button
+    (click)="openStudentModel()"
     class="bg-gray-700 transition-colors duration-300 transform text-white hover:bg-gray-600 focus:outline-none focus:bg-gray-600 rounded-md mr-2 px-4 py-2"
   >
     Add New
   </button>
 </nav>
 
+<!-- ++ ++ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ++++++++++++++ +++++++++++++++++++++++++++++++++++++++++   CREATE NEW STUDENT   +++++++++++++++++ +++++++++++++++ ++++++ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
 <section
-  class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800"
+  id="createStudentModel"
+  class="hidden max-w-4xl border-1 border-gray-600 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800"
 >
   <h2 class="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
     Add new Student
@@ -26,10 +30,10 @@
     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
       <div>
         <label class="text-gray-700 dark:text-gray-200" for="username"
-          >Username</label
+          >Student Name</label
         >
         <input
-          id="username"
+          id="name"
           type="text"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
         />
@@ -37,10 +41,10 @@
 
       <div>
         <label class="text-gray-700 dark:text-gray-200" for="emailAddress"
-          >Email Address</label
+          >Email</label
         >
         <input
-          id="emailAddress"
+          id="email"
           type="email"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
         />
@@ -48,11 +52,12 @@
 
       <div>
         <label class="text-gray-700 dark:text-gray-200" for="password"
-          >Password</label
+          >Mobile No</label
         >
         <input
-          id="password"
-          type="password"
+          id="mobileNo"
+          type="tel"
+          maxlength="10"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
         />
       </div>
@@ -61,21 +66,52 @@
         <label
           class="text-gray-700 dark:text-gray-200"
           for="passwordConfirmation"
-          >Password Confirmation</label
+          >City</label
         >
         <input
-          id="passwordConfirmation"
-          type="password"
+          id="city"
+          type="text"
+          class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+        />
+      </div>
+
+      <div>
+        <label
+          class="text-gray-700 dark:text-gray-200"
+          for="passwordConfirmation"
+          >Address</label
+        >
+        <input
+          id="address"
+          type="text"
+          class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+        />
+      </div>
+
+      <div>
+        <label class="text-gray-700 dark:text-gray-200" for="password"
+          >Pincode
+        </label>
+        <input
+          id="pincode"
+          type="tel"
+          maxlength="6"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
         />
       </div>
     </div>
 
-    <div class="flex justify-end mt-6">
+    <div class="flex justify-end gap-2 mt-6">
       <button
-        class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+        (click)="closeModel()"
+        class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform rounded-md bg-red-500 hover:bg-red-600 focus:bg-red-400"
       >
-        Save
+        Cancel
+      </button>
+      <button
+        class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md focus:bg-gray-600 hover:bg-gray-800"
+      >
+        Add
       </button>
     </div>
   </form>
@@ -84,7 +120,7 @@
 <!-- ++ ++ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ++++++++++++++ +++++++++++++++++++++++++++++++++++++++++STUDENT CARD    +++++++++++++++++ +++++++++++++++ ++++++ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 <div
-  class="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+  class="w-full m-3 max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
 >
   <div class="px-6 py-4">
     <h1 class="text-xl font-semibold text-gray-800 dark:text-white">
@@ -138,6 +174,3 @@ city
 address
 pincode
 -->
-
-
-
