@@ -20,7 +20,7 @@
 
 <section
   id="createStudentModel"
-  class="hidden max-w-4xl border-1 border-gray-600 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800"
+  class="hidden max-w-4xl border-1 m-2 border-gray-600 p-6 bg-white rounded-md shadow-md dark:bg-gray-800"
 >
   <h2 class="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
     Add new Student
@@ -33,7 +33,9 @@
           >Student Name</label
         >
         <input
-          id="name"
+          [(ngModel)]="studentObj.name"
+          placeholder="Student Name"
+          name="name"
           type="text"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
         />
@@ -44,7 +46,9 @@
           >Email</label
         >
         <input
-          id="email"
+          [(ngModel)]="studentObj.email"
+          placeholder="Email"
+          name="email"
           type="email"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
         />
@@ -55,7 +59,9 @@
           >Mobile No</label
         >
         <input
-          id="mobileNo"
+          [(ngModel)]="studentObj.mobileNo"
+          placeholder="Mobile No"
+          name="mobileNo"
           type="tel"
           maxlength="10"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -69,7 +75,9 @@
           >City</label
         >
         <input
-          id="city"
+          [(ngModel)]="studentObj.city"
+          placeholder="City"
+          name="city"
           type="text"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
         />
@@ -82,7 +90,9 @@
           >Address</label
         >
         <input
-          id="address"
+          [(ngModel)]="studentObj.address"
+          placeholder="Address"
+          name="address"
           type="text"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
         />
@@ -93,7 +103,9 @@
           >Pincode
         </label>
         <input
-          id="pincode"
+          [(ngModel)]="studentObj.pincode"
+          placeholder="Pincode"
+          name="pincode"
           type="tel"
           maxlength="6"
           class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -109,6 +121,7 @@
         Cancel
       </button>
       <button
+        (click)="addStudent()"
         class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md focus:bg-gray-600 hover:bg-gray-800"
       >
         Add
@@ -119,51 +132,54 @@
 
 <!-- ++ ++ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ++++++++++++++ +++++++++++++++++++++++++++++++++++++++++STUDENT CARD    +++++++++++++++++ +++++++++++++++ ++++++ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-<div
-  class="w-full m-3 max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
->
-  <div class="px-6 py-4">
-    <h1 class="text-xl font-semibold text-gray-800 dark:text-white">
-      Student Name
-    </h1>
-    <div class="grid grid-cols-2 gap-2 mt-4">
-      <div class="flex">
-        <i class="fi fi-br-phone-call pt-[4px]"></i>
-        <span class="ml-2">8798798798</span>
+<div class="grid grid-cols-12 gap-4 m-3">
+  @for (student of studentList; track $index) {
+  <div
+    class="w-100 col-span-12 md:col-span-6 lg:col-span-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+  >
+    <div class="px-6 py-4">
+      <h1 class="text-xl font-semibold text-gray-800 dark:text-white">
+        {{ student.name }}
+      </h1>
+      <div class="grid grid-cols-2 gap-2 mt-4">
+        <div class="flex">
+          <i class="fi fi-br-phone-call pt-[4px]"></i>
+          <span class="ml-2">{{ student.mobileNo }}</span>
+        </div>
+        <div class="flex">
+          <i class="fi fi-br-envelope pt-[4px]"></i>
+          <span class="ml-2">{{ student.email }}</span>
+        </div>
+        <div class="flex">
+          <i class="fi fi-br-marker pt-[4px]"></i>
+          <span class="ml-2">{{ student.city }}</span>
+        </div>
+        <div class="flex">
+          <i class="fi fi-br-map-pin pt-[4px]"></i>
+          <span class="ml-2">{{ student.pincode }}</span>
+        </div>
+        <div class="flex col-span-2">
+          <i class="fi fi-br-map-pin pt-[4px]"></i>
+          <span class="ml-2">{{ student.address }}.</span>
+        </div>
       </div>
-      <div class="flex">
-        <i class="fi fi-br-envelope pt-[4px]"></i>
-        <span class="ml-2">example.com</span>
-      </div>
-      <div class="flex">
-        <i class="fi fi-br-marker pt-[4px]"></i>
-        <span class="ml-2">City</span>
-      </div>
-      <div class="flex">
-        <i class="fi fi-br-map-pin pt-[4px]"></i>
-        <span class="ml-2">Pincode</span>
-      </div>
-      <div class="flex col-span-2">
-        <i class="fi fi-br-map-pin pt-[4px]"></i>
-        <span class="ml-2"
-          >Full address of the student will be appear here.</span
+      <div class="h-[1px] w-full bg-black my-4"></div>
+      <div class="grid grid-cols-2 gap-2 mt-4">
+        <button
+          class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none"
         >
+          Edit</button
+        ><button
+          class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-500 rounded-md hover:bg-red-600 focus:outline-none"
+        >
+          Delete
+        </button>
       </div>
-    </div>
-    <div class="h-[1px] w-full bg-black my-4"></div>
-    <div class="grid grid-cols-2 gap-2 mt-4">
-      <button
-        class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none"
-      >
-        Edit</button
-      ><button
-        class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-500 rounded-md hover:bg-red-600 focus:outline-none"
-      >
-        Delete
-      </button>
     </div>
   </div>
+  }
 </div>
+
 <router-outlet />
 
 <!-- 
