@@ -17,122 +17,130 @@
 </nav>
 
 <!-- ++ ++ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ++++++++++++++ +++++++++++++++++++++++++++++++++++++++++   CREATE NEW STUDENT   +++++++++++++++++ +++++++++++++++ ++++++ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<div class="flex items-center justify-center mt-4 w-100">
+  <section
+    id="createStudentModel"
+    class="hidden max-w-5xl center border-1 mx-2 border-gray-600 p-6 bg-white rounded-md shadow-md dark:bg-gray-800"
+  >
+    <h2 class="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
+      Add new Student
+    </h2>
 
-<section
-  id="createStudentModel"
-  class="hidden  max-w-4xl center border-1 mx-auto border-gray-600 p-6 bg-white rounded-md shadow-md dark:bg-gray-800"
->
-  <h2 class="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
-    Add new Student
-  </h2>
+    <form>
+      <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+        <div>
+          <label class="text-gray-700 dark:text-gray-200" for="username"
+            >Student Name</label
+          >
+          <input
+            [(ngModel)]="studentObj.name"
+            placeholder="Student Name"
+            name="name"
+            type="text"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+          />
+        </div>
 
-  <form>
-    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-      <div>
-        <label class="text-gray-700 dark:text-gray-200" for="username"
-          >Student Name</label
+        <div>
+          <label class="text-gray-700 dark:text-gray-200" for="emailAddress"
+            >Email</label
+          >
+          <input
+            [(ngModel)]="studentObj.email"
+            placeholder="Email"
+            name="email"
+            type="email"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+          />
+        </div>
+
+        <div>
+          <label class="text-gray-700 dark:text-gray-200" for="password"
+            >Mobile No</label
+          >
+          <input
+            [(ngModel)]="studentObj.mobileNo"
+            placeholder="Mobile No"
+            name="mobileNo"
+            type="tel"
+            maxlength="10"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+          />
+        </div>
+
+        <div>
+          <label
+            class="text-gray-700 dark:text-gray-200"
+            for="passwordConfirmation"
+            >City</label
+          >
+          <input
+            [(ngModel)]="studentObj.city"
+            placeholder="City"
+            name="city"
+            type="text"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+          />
+        </div>
+
+        <div>
+          <label
+            class="text-gray-700 dark:text-gray-200"
+            for="passwordConfirmation"
+            >Address</label
+          >
+          <input
+            [(ngModel)]="studentObj.address"
+            placeholder="Address"
+            name="address"
+            type="text"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+          />
+        </div>
+
+        <div>
+          <label class="text-gray-700 dark:text-gray-200" for="password"
+            >Pincode
+          </label>
+          <input
+            [(ngModel)]="studentObj.pincode"
+            placeholder="Pincode"
+            name="pincode"
+            type="tel"
+            maxlength="6"
+            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+          />
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2 mt-6">
+        <button
+          (click)="closeModel()"
+          class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform rounded-md bg-red-500 hover:bg-red-600 focus:bg-red-400"
         >
-        <input
-          [(ngModel)]="studentObj.name"
-          placeholder="Student Name"
-          name="name"
-          type="text"
-          class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-        />
-      </div>
-
-      <div>
-        <label class="text-gray-700 dark:text-gray-200" for="emailAddress"
-          >Email</label
+          Cancel
+        </button>
+        @if (studentObj.id == 0) {<button
+          (click)="addStudent()"
+          class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md focus:bg-gray-600 hover:bg-gray-800"
         >
-        <input
-          [(ngModel)]="studentObj.email"
-          placeholder="Email"
-          name="email"
-          type="email"
-          class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-        />
-      </div>
-
-      <div>
-        <label class="text-gray-700 dark:text-gray-200" for="password"
-          >Mobile No</label
+          Add</button
+        >} @else {
+        <button
+          (click)="updateStudent()"
+          class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-700 rounded-md focus:bg-green-600 hover:bg-green-800"
         >
-        <input
-          [(ngModel)]="studentObj.mobileNo"
-          placeholder="Mobile No"
-          name="mobileNo"
-          type="tel"
-          maxlength="10"
-          class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-        />
+          Update
+        </button>
+        }
       </div>
-
-      <div>
-        <label
-          class="text-gray-700 dark:text-gray-200"
-          for="passwordConfirmation"
-          >City</label
-        >
-        <input
-          [(ngModel)]="studentObj.city"
-          placeholder="City"
-          name="city"
-          type="text"
-          class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-        />
-      </div>
-
-      <div>
-        <label
-          class="text-gray-700 dark:text-gray-200"
-          for="passwordConfirmation"
-          >Address</label
-        >
-        <input
-          [(ngModel)]="studentObj.address"
-          placeholder="Address"
-          name="address"
-          type="text"
-          class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-        />
-      </div>
-
-      <div>
-        <label class="text-gray-700 dark:text-gray-200" for="password"
-          >Pincode
-        </label>
-        <input
-          [(ngModel)]="studentObj.pincode"
-          placeholder="Pincode"
-          name="pincode"
-          type="tel"
-          maxlength="6"
-          class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-        />
-      </div>
-    </div>
-
-    <div class="flex justify-end gap-2 mt-6">
-      <button
-        (click)="closeModel()"
-        class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform rounded-md bg-red-500 hover:bg-red-600 focus:bg-red-400"
-      >
-        Cancel
-      </button>
-      <button
-        (click)="addStudent()"
-        class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md focus:bg-gray-600 hover:bg-gray-800"
-      >
-        Add
-      </button>
-    </div>
-  </form>
-</section>
+    </form>
+  </section>
+</div>
 
 <!-- ++ ++ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ++++++++++++++ +++++++++++++++++++++++++++++++++++++++++STUDENT CARD    +++++++++++++++++ +++++++++++++++ ++++++ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-<div class="grid grid-cols-12 gap-4 m-3">
+@if (studentList.length !==0) {
+<div id="studentCard" class="grid grid-cols-12 gap-2 m-3">
   @for (student of studentList; track $index) {
   <div
     class="w-100 col-span-12 md:col-span-6 lg:col-span-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
@@ -166,10 +174,11 @@
       <div class="h-[1px] w-full bg-black my-4"></div>
       <div class="grid grid-cols-2 gap-2 mt-4">
         <button
+          (click)="onEdit(student)"
           class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none"
         >
           Edit</button
-        ><button
+        ><button (click)="onDelete(student)"
           class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-500 rounded-md hover:bg-red-600 focus:outline-none"
         >
           Delete
@@ -179,6 +188,15 @@
   </div>
   }
 </div>
+} @else {
+<div class="w-100 text-center col-span-12 md:col-span-6 lg:col-span-4">
+  <div class="px-6 py-4">
+    <h1 class="text-xl font-semibold text-gray-800 dark:text-white">
+      No students found. Create student by clicking on Add new.
+    </h1>
+  </div>
+</div>
+}
 
 <router-outlet />
 
