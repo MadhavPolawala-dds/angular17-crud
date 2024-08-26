@@ -20,7 +20,7 @@
 <div class="flex items-center justify-center mt-4 w-100">
   <section
     id="createStudentModel"
-    class="hidden max-w-5xl center border-1 mx-2 border-gray-600 p-6 bg-white rounded-md shadow-md dark:bg-gray-800"
+    class="hidden max-w-4xl w-full center border-1 mx-2 border-gray-600 p-6 bg-white rounded-md shadow-md dark:bg-gray-800"
   >
     <h2 class="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
       Add new Student
@@ -143,7 +143,7 @@
 <div id="studentCard" class="grid grid-cols-12 gap-2 m-3">
   @for (student of studentList; track $index) {
   <div
-    class="w-100 col-span-12 md:col-span-6 lg:col-span-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+    class="w-100 col-span-12 lg:col-span-6 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
   >
     <div class="px-6 py-4">
       <h1 class="text-xl font-semibold text-gray-800 dark:text-white">
@@ -178,7 +178,8 @@
           class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none"
         >
           Edit</button
-        ><button (click)="onDelete(student)"
+        ><button
+          (click)="onDelete(student)"
           class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-500 rounded-md hover:bg-red-600 focus:outline-none"
         >
           Delete
