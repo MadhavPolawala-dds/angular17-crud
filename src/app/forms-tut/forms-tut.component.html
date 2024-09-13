@@ -1,0 +1,82 @@
+<h1>Template-Driven Form</h1>
+
+<form class="p-10" #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+  <input
+    class="h-[58px] w-[280px] bg-[#b4d0ff78] border border-black pl-5"
+    type="text"
+    name="name"
+    placeholder="Name"
+    ngModel
+  /><br /><br />
+  <input
+    class="h-[58px] w-[280px] bg-[#b4d0ff78] border border-black pl-5"
+    type="email"
+    name="email"
+    placeholder="email"
+    ngModel
+  /><br /><br />
+
+  <button
+    class="h-[58px] w-[280px] bg-[#b4d0ff78] hover:bg-black hover:text-white rounded border border-blue-600"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+
+<h1 class="pl-10 pt-16 -mb-5">Reactive Form</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()" class="p-10">
+  <input
+    class="h-[58px] w-[280px] bg-[#b4d0ff78] border border-black pl-5"
+    type="text"
+    name="name"
+    placeholder="Name"
+    formControlName="name"
+  /><br />
+
+  @if (nameValidation && nameValidation.invalid && nameValidation.touched) {
+  <span class="text-red-500">Please enter your name</span>
+  }
+
+  <br />
+  <input
+    class="h-[58px] w-[280px] bg-[#b4d0ff78] border border-black pl-5"
+    type="email"
+    name="email"
+    placeholder="email"
+    formControlName="email"
+  /><br />
+  @if (emailValidation && emailValidation.invalid && emailValidation.touched) {
+  <span class="text-red-500">Please enter valid email</span>
+  }
+  <br />
+
+  <input
+    class="h-[58px] w-[280px] bg-[#b4d0ff78] border border-black pl-5"
+    type="password"
+    name="password"
+    placeholder="Enter Password"
+    formControlName="password"
+  /><br />
+  @if (passwordValidation && passwordValidation.touched &&
+  passwordValidation.errors?.['required']) {
+  <span class="text-red-500">Please enter valid password</span>
+
+  } @if (passwordValidation?.errors?.['minlength']) {
+  <span class="text-red-500">Password length should be greater than 8</span>
+  }
+  <br />
+
+  <button
+    class="h-[58px] w-[280px] bg-[#b4d0ff78] hover:bg-black hover:text-white rounded border border-blue-600"
+    type="submit"
+    [disabled]="loginForm.invalid"
+    [ngClass]="{
+      'cursor-not-allowed': loginForm.invalid,
+      'bg-slate-400; hover:bg-[#b4d0ff]': loginForm.invalid
+    }"
+  >
+    Submit
+  </button>
+</form>
